@@ -19,7 +19,7 @@ public class Menu {
             System.out.println("|   Choose 4: Exit!!!            |");
             System.out.println("|--------------------------------|");
             Scanner sc = new Scanner(System.in);
-            System.out.println("Input choice: ");
+            System.out.print("Input choice: ");
             choice = sc.nextInt();
             switch (choice) {
                 case 1:
@@ -40,11 +40,19 @@ public class Menu {
 
     public static void choice1() {
         Scanner sc = new Scanner(System.in);
-        int a, b;
+        double a = 0;
+        double b = 0;
         System.out.println("Input  a, b: ");
-        a = sc.nextInt();
-        b = sc.nextInt();
-        System.out.println("Input choice: ");
+        while (true) {
+            try {
+                a = sc.nextDouble();
+                b = sc.nextDouble();
+            } catch (Exception e) {
+                System.out.println("Please input number!");
+            }
+           break;
+        }
+        System.out.println("Input your choice + - * /: ");
         char choice = sc.next().charAt(0);
         switch (choice) {
             case '+':
@@ -57,7 +65,14 @@ public class Menu {
                 System.out.println("a * b = " + a * b);
                 break;
             case '/':
-                System.out.println("a / b = " + a / b);
+                if (b == 0) {
+                    System.out.println("You input b = 0 so error");
+                } else {
+                    System.out.println("a / b = " + a / b);
+                }
+                break;
+            default:
+                System.out.println("Please input ( + - * / )");
                 break;
         }
     }
@@ -67,13 +82,13 @@ public class Menu {
         System.out.println("Input your name: ");
         String name = sc.nextLine();
         System.out.println("Your name is: " + name);
-        int attend, midterm, finals;
+        double attend, midterm, finals;
         System.out.println("Input your attendance: ");
-        attend = sc.nextInt();
+        attend = sc.nextDouble();
         System.out.println("Input your midterm score: ");
-        midterm = sc.nextInt();
+        midterm = sc.nextDouble();
         System.out.println("Input your final score: ");
-        finals = sc.nextInt();
+        finals = sc.nextDouble();
         double cs = (attend * 0.2 + midterm * 0.3 + finals * 0.5);
         System.out.println("Your course score is: " + cs);
     }
